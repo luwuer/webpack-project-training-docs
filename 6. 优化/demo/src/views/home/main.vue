@@ -1,19 +1,21 @@
 <template>
-  <div class="page-a">
+  <div class="home">
     <h1>
-      This is page-a
+      This is page-home
     </h1>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'page-a'
+  name: 'home'
 }
 </script>
 
 <style lang="stylus" scoped>
-.page-a {
-  background: blue;
+@import '~@/styles/main.styl';
+
+.home {
+  background: red;
 }
 </style>

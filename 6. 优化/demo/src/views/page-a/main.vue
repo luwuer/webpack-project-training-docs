@@ -13,6 +13,8 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+@import '~@/styles/main.styl';
+
 .page-a {
   background: blue;
 }
