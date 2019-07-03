@@ -7,8 +7,14 @@
 </template>
 
 <script>
+import { counter } from '@/utils'
+
 export default {
-  name: 'page-a'
+  name: 'page-a',
+  created() {
+    counter()
+    console.log('home:', counter.count)
+  }
 }
 </script>
 
