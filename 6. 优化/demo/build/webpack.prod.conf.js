@@ -3,6 +3,7 @@ const {
 } = require('clean-webpack-plugin')
 const TerserJSPlugin = require("terser-webpack-plugin")
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin")
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const config = require('./config')
 // const {
 //   resolve
@@ -33,12 +34,18 @@ const webpackConfig = {
       maxInitialRequests: 3,
       automaticNameDelimiter: '/',
       name(mod, chunks) {
-        if (chunks[0].name === 'app') return 'app.vendor'
+        if (chunks[0].name === 'app') return 'dependencies/app.vendor'
 
-        let requestName = mod.request.replace(/.*\\src\\/, '').replace(/"/g, '')
-        if (requestName) return requestName
+        return chunks[0].name
 
-        return 'unname'
+        // if (/src/.test(mod.request)) {
+        //   let requestName = mod.request.replace(/.*\\src\\/, '').replace(/"/g, '')
+        //   if (requestName) return requestName
+        // } else if (/node_modules/.test(mod.request)) {
+        //   return 'dependencies/' + mod.request.match(/node_modules.[\w-]+/)[0].replace(/node_modules./, '')
+        // }
+        // return 'unname'
+        // return null
       },
       cacheGroups: {
         vendors: {
@@ -54,7 +61,11 @@ const webpackConfig = {
     }
   },
   plugins: [
-    new CleanWebpackPlugin()
+    new CleanWebpackPlugin(),
+    new MiniCssExtractPlugin({
+      filename: 'css/[name].[contenthash:5].css',
+      chunkFilename: 'css/[name].[contenthash:5].css'
+    })
   ]
 }
 
