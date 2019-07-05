@@ -7,8 +7,19 @@
 </template>
 
 <script>
+// 静态加载
+// import _ from 'lodash'
+// 懒加载
+// import(/* webpackChunkName: "dependencies/lodash" */ 'lodash')
+import { counter } from '@/utils'
+
 export default {
-  name: 'page-a'
+  name: 'page-a',
+  created() {
+    counter()
+    console.log('page-a:', counter.count)
+    console.log('page-a:', _.now())
+  }
 }
 </script>
 
