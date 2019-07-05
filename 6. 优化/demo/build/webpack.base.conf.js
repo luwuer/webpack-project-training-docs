@@ -1,8 +1,9 @@
-const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const {
-  resolve
+  resolve,
+  generateAddAssests,
+  generateDllReferences
 } = require('./utils')
 
 module.exports = {
@@ -95,6 +96,8 @@ module.exports = {
     new VueLoaderPlugin(),
     new HtmlWebpackPlugin({
       template: resolve('index.html')
-    })
+    }),
+    ...generateAddAssests(),
+    ...generateDllReferences()
   ]
 }

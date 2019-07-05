@@ -10,8 +10,8 @@ const config = require('./config')
 // } = require('./utils')
 
 const webpackConfig = {
-  mode: 'development',
-  // mode: 'production',
+  // mode: 'development',
+  mode: 'production',
   devtool: config.production.sourceMap ?
     'cheap-module-eval-source-map' : 'none',
   output: {

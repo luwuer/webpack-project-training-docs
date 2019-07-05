@@ -19,9 +19,9 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-@import '~@/styles/main.styl';
+@import '~@/styles/main.styl'
 
 .home {
-  background: red;
+  background red
 }
 </style>
