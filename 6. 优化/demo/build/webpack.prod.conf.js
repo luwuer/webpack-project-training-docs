@@ -13,7 +13,7 @@ const webpackConfig = {
   // mode: 'development',
   mode: 'production',
   devtool: config.production.sourceMap ?
-    'cheap-module-eval-source-map' : 'none',
+    'cheap-module-source-map' : 'none',
   output: {
     filename: '[name].[contentHash:5].js',
     chunkFilename: '[name].[contentHash:5].chunk.js'

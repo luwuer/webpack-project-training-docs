@@ -31,22 +31,9 @@ module.exports = {
         options: {
           // 在开发环境下，不使用 prettier 格式化编译后的模板渲染代码
           // 更多设置： https://vue-loader.vuejs.org/zh/options.html#cachedirectory-cacheidentifier
-          prettify: false
+          prettify: false,
+          cacheDirectory: resolve('/.cache')
         }
-      },
-      {
-        test: /\.(png|jpe?g|gif|webp)$/,
-        use: [{
-          loader: 'url-loader',
-          options: {
-            // 文件命名
-            name: '[name].[ext]',
-            // 输出路径
-            outputPath: 'imgs/',
-            // 小于 10k 的图片转成 base64 编码
-            limit: 10240
-          }
-        }]
       },
       {
         test: /\.styl(us)?$/,
@@ -80,6 +67,20 @@ module.exports = {
       //     'css-loader'
       //   ]
       // },
+      {
+        test: /\.(png|jpe?g|gif|webp)$/,
+        use: [{
+          loader: 'url-loader',
+          options: {
+            // 文件命名
+            name: '[name].[ext]',
+            // 输出路径
+            outputPath: 'imgs/',
+            // 小于 10k 的图片转成 base64 编码
+            limit: 10240
+          }
+        }]
+      },
       {
         test: /\.(woff2?|eot|ttf|otf|svg)(\?.*)?$/i,
         use: {
