@@ -32,7 +32,19 @@ module.exports = {
           // 在开发环境下，不使用 prettier 格式化编译后的模板渲染代码
           // 更多设置： https://vue-loader.vuejs.org/zh/options.html#cachedirectory-cacheidentifier
           prettify: false,
-          cacheDirectory: resolve('/.cache')
+          cacheDirectory: resolve('node_modules/.cache/vue-loader'),
+          cacheIdentifier: 'vue'
+        }
+      },
+      {
+        test: /\.js$/,
+        loader: 'babel-loader',
+        include: [
+          resolve('src')
+        ],
+        options: {
+          cacheDirectory: true // 默认目录 node_modules/.cache/babel-loader
+          // cacheDirectory: resolve('/.cache/babel-loader')
         }
       },
       {

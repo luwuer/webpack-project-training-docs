@@ -35,7 +35,6 @@ const webpackConfig = {
       automaticNameDelimiter: '/',
       name(mod, chunks) {
         if (chunks[0].name === 'app') return 'dependencies/app.vendor'
-
         return chunks[0].name
 
         // if (/src/.test(mod.request)) {
@@ -44,7 +43,6 @@ const webpackConfig = {
         // } else if (/node_modules/.test(mod.request)) {
         //   return 'dependencies/' + mod.request.match(/node_modules.[\w-]+/)[0].replace(/node_modules./, '')
         // }
-        // return 'unname'
         // return null
       },
       cacheGroups: {
