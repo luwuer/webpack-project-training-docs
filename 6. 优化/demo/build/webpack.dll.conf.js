@@ -3,8 +3,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const { resolve } = require('./utils')
 
 const libs = {
-  _frame: ['vue', 'vue-router', 'vuex'],
-  _utils: ['lodash']
+  _frame: ['vue', 'vue-router', 'vuex']
 }
 
 module.exports = {
@@ -17,9 +16,7 @@ module.exports = {
     library: '[name]' // 与 DllPlugin.name 保持一致
   },
   plugins: [
-    new CleanWebpackPlugin({
-      cleanOnceBeforeBuildPatterns: []
-    }),
+    new CleanWebpackPlugin(),
     new webpack.DllPlugin({
       name: '[name]',
       path: resolve('dll', '[name].manifest.json'),

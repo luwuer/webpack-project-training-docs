@@ -11,9 +11,9 @@ let $body = document.querySelector('body')
 let $imgWrapper = document.createElement('div')
 
 // 大图
-let img = new Image()
-img.src = require('./imgs/多啦A梦.jpg')
-$imgWrapper.append(img)
+// let img = new Image()
+// img.src = require('./imgs/多啦A梦.jpg')
+// $imgWrapper.append(img)
 
 // 小图
 let smallImgNames = ['赞', '箭头', '添加', '搜索', '分享']

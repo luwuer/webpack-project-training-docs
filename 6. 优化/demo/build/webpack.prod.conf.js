@@ -4,6 +4,7 @@ const {
 const TerserJSPlugin = require("terser-webpack-plugin")
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin")
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 const config = require('./config')
 // const {
 //   resolve
@@ -27,24 +28,25 @@ const webpackConfig = {
     ],
     splitChunks: {
       chunks: 'all',
-      minSize: 1, // 正常设置 20000+ 即 20k+ ，但这里我们的公共文件只有几行代码，所以设置为 1
+      minSize: 20000, // 正常设置 20000+ 即 20k+ ，但这里我们的公共文件只有几行代码，所以设置为 1
       maxSize: 0,
       minChunks: 1,
       maxAsyncRequests: 5,
       maxInitialRequests: 3,
       automaticNameDelimiter: '/',
-      name(mod, chunks) {
-        if (chunks[0].name === 'app') return 'dependencies/app.vendor'
-        return chunks[0].name
+      // name(mod, chunks) {
+      //   if (chunks[0].name === 'app') return 'dependencies/app.vendor'
+      //   return chunks[0].name
 
-        // if (/src/.test(mod.request)) {
-        //   let requestName = mod.request.replace(/.*\\src\\/, '').replace(/"/g, '')
-        //   if (requestName) return requestName
-        // } else if (/node_modules/.test(mod.request)) {
-        //   return 'dependencies/' + mod.request.match(/node_modules.[\w-]+/)[0].replace(/node_modules./, '')
-        // }
-        // return null
-      },
+      //   // if (/src/.test(mod.request)) {
+      //   //   let requestName = mod.request.replace(/.*\\src\\/, '').replace(/"/g, '')
+      //   //   if (requestName) return requestName
+      //   // } else if (/node_modules/.test(mod.request)) {
+      //   //   return 'dependencies/' + mod.request.match(/node_modules.[\w-]+/)[0].replace(/node_modules./, '')
+      //   // }
+      //   // return null
+      // },
+      name: false,
       cacheGroups: {
         vendors: {
           test: /[\\/]node_modules[\\/]/,
@@ -58,8 +60,21 @@ const webpackConfig = {
       }
     }
   },
+  externals: {
+    lodash: {
+      commonjs: 'lodash',
+      umd: 'lodash',
+      root: '_' // 默认执行环境已经存在全局变量： _ ，浏览器中就是 window._
+    }
+  },
   plugins: [
     new CleanWebpackPlugin(),
+    new CopyWebpackPlugin([
+      {
+        from: 'static/',
+        to: 'static/'
+      }
+    ]),
     new MiniCssExtractPlugin({
       filename: 'css/[name].[contenthash:5].css',
       chunkFilename: 'css/[name].[contenthash:5].css'

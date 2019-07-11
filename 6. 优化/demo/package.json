@@ -4,8 +4,7 @@
   "description": "",
   "main": "src.js",
   "sideEffects": [
-    "*.css",
-    "*.styl(us)?"
+    "*.vue"
   ],
   "scripts": {
     "dev": "webpack-dev-server --progress --config build/build.js",
@@ -30,7 +29,11 @@
     "chalk": "^2.4.2",
     "clean-webpack-plugin": "^3.0.0",
     "cli-spinner": "^0.2.10",
+    "copy-webpack-plugin": "^5.0.3",
     "css-loader": "^3.0.0",
+    "eslint": "^6.0.1",
+    "eslint-config-standard": "^13.0.0",
+    "eslint-plugin-vue": "^5.2.3",
     "file-loader": "^4.0.0",
     "glob": "^7.1.4",
     "html-webpack-plugin": "^3.2.0",
@@ -44,6 +47,7 @@
     "vue-loader": "^15.7.0",
     "vue-template-compiler": "^2.6.10",
     "webpack": "^4.32.2",
+    "webpack-bundle-analyzer": "^3.3.2",
     "webpack-cli": "^3.3.5",
     "webpack-dev-server": "^3.7.2",
     "webpack-merge": "^4.2.1"

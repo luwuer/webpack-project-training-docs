@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const {
   resolve,
   generateAddAssests,
@@ -19,7 +20,8 @@ module.exports = {
   resolve: {
     extensions: ['.vue', '.js'],
     alias: {
-      '@': resolve('./src')
+      '@': resolve('./src'),
+      '@root': resolve()
     },
     modules: [resolve('./node_modules')]
   },
@@ -52,7 +54,8 @@ module.exports = {
         use: [
           process.env.NODE_ENV !== 'production' ?
           'vue-style-loader' : {
-            loader: resolve('node_modules/mini-css-extract-plugin/dist/loader.js'),
+            // loader: resolve('node_modules/mini-css-extract-plugin/dist/loader.js'),
+            loader: MiniCssExtractPlugin.loader,
             options: {
               publicPath: '../'
             }
@@ -72,13 +75,19 @@ module.exports = {
           }
         ]
       },
-      // {
-      //   test: /\.css$/,
-      //   use: [
-      //     'style-loader',
-      //     'css-loader'
-      //   ]
-      // },
+      {
+        test: /\.css$/,
+        use: [
+          process.env.NODE_ENV !== 'production' ?
+          'vue-style-loader' : {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              publicPath: '../'
+            }
+          },
+          'css-loader'
+        ]
+      },
       {
         test: /\.(png|jpe?g|gif|webp)$/,
         use: [{
@@ -109,6 +118,10 @@ module.exports = {
     new VueLoaderPlugin(),
     new HtmlWebpackPlugin({
       template: resolve('index.html')
+    }),
+    new MiniCssExtractPlugin({
+      filename: 'css/[name].[contenthash:5].css',
+      chunkFilename: 'css/[name].[contenthash:5].css'
     }),
     ...generateAddAssests(),
     ...generateDllReferences()

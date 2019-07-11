@@ -7,6 +7,13 @@
 </template>
 
 <script>
+// 设置 noParse 并引入 min 包
+// import 'lodash'
+// import(/*webpackChunkName: "dependencies/lodash" */ 'lodash')
+// import(/*webpackChunkName: "dependencies/lodash" */ '@root/node_modules/lodash/lodash.js')
+// 单个函数引入
+// import now from 'lodash/now'
+// import 'lodash'
 // 静态加载
 // import _ from 'lodash'
 // 懒加载
