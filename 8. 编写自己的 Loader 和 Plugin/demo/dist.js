@@ -1,3 +1,8 @@
+/*
+ * @copyright hundsun
+ * @version 1.0.0
+ */
+
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -93,7 +98,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("console.log('Hello World!')\r\n\n\n//# sourceURL=webpack:///./hello-world.js?");
+eval("console.log('Hello Loader!')\r\n\n\n//# sourceURL=webpack:///./hello-world.js?");
 
 /***/ })
 
