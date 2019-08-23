@@ -1,0 +1,28 @@
+{
+  "mod-a": [{
+      "name": "aa",
+      "path": "/mod/a/a/a"
+    },
+    {
+      "name": "ab",
+      "path": "/mod/a/a/b"
+    },
+    {
+      "name": "ba",
+      "path": "/mod/a/b/a"
+    }
+  ],
+  "mod-b": [{
+      "name": "aa",
+      "path": "/mod/b/a/a"
+    },
+    {
+      "name": "ab",
+      "path": "/mod/b/a/b"
+    },
+    {
+      "name": "ba",
+      "path": "/mod/b/b/a"
+    }
+  ]
+}

@@ -18,13 +18,14 @@
 // import _ from 'lodash'
 // 懒加载
 // import(/* webpackChunkName: "dependencies/lodash" */ 'lodash')
-import { counter } from '@/utils'
+// import { counter } from '@/utils'
+import * as utils from '@/utils'
 
 export default {
   name: 'page-a',
   created() {
-    counter()
-    console.log('page-a:', counter.count)
+    utils.counter()
+    console.log('page-a:', utils.counter.count)
     console.log('page-a:', _.now())
   }
 }
